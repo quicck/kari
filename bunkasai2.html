@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1M運営シフト表</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter & Noto Sans JP -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <script>
@@ -37,195 +35,178 @@
         }
     </script>
     <style>
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-3px); }
         }
-        .animate-fade-in {
-            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
         }
-        .cell-hover {
-            transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
-        }
-        .cell-hover:hover {
-            background-color: rgba(0, 97, 164, 0.08);
-            transform: scale(1.03) translateY(-2px);
-            z-index: 10;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
-        }
-        ::-webkit-scrollbar {
-            height: 10px;
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #C4C7C5;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #74777F;
+        html, body {
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
         }
     </style>
 </head>
-<body class="bg-md_sys-surface text-md_sys-onSurface font-sans min-h-screen flex flex-col items-center justify-start p-8 sm:p-16 selection:bg-md_sys-primaryContainer selection:text-md_sys-onPrimaryContainer">
+<body class="bg-md_sys-surface text-md_sys-onSurface font-sans h-screen w-screen flex flex-col justify-between p-4 selection:bg-md_sys-primaryContainer selection:text-md_sys-onPrimaryContainer">
 
-    <header class="w-full max-w-[1400px] mx-auto mb-12 flex items-center gap-5 animate-fade-in">
-        <div class="w-16 h-16 rounded-2xl bg-md_sys-primaryContainer text-md_sys-onPrimaryContainer flex items-center justify-center shadow-sm">
-            <span class="material-symbols-outlined text-3xl">event_note</span>
+    <header class="w-full max-w-[1900px] mx-auto flex items-center gap-3 shrink-0 py-1">
+        <div class="w-10 h-10 rounded-2xl bg-md_sys-primaryContainer text-md_sys-onPrimaryContainer flex items-center justify-center shadow-xs animate-float">
+            <span class="material-symbols-outlined text-xl">event_note</span>
         </div>
         <div>
-            <h1 class="text-3xl sm:text-5xl font-bold tracking-tight">1M運営シフト表</h1>
-            <p class="text-base sm:text-lg text-md_sys-outline mt-2">当日の担当配置一覧</p>
+            <h1 class="text-2xl font-bold tracking-tight text-md_sys-onSurface">1M運営シフト表</h1>
         </div>
     </header>
 
-    <main class="w-full max-w-[1400px] mx-auto flex-1 overflow-x-auto pb-16 animate-fade-in" style="animation-delay: 0.15s;">
-        <table class="w-full border-collapse min-w-[1300px] bg-transparent text-base sm:text-lg border-spacing-0">
+    <main class="w-full max-w-[1900px] mx-auto flex-1 flex flex-col justify-center my-auto overflow-x-auto overflow-y-hidden pb-2">
+        <table class="w-[2000px] sm:w-[2200px] h-[78vh] border-collapse bg-transparent text-sm sm:text-base border-spacing-0 table-fixed">
             <thead>
-                <tr class="border-b-2 border-md_sys-outlineVariant/40 text-center font-semibold text-md_sys-onSurfaceVariant">
-                    <th class="py-6 px-6 bg-md_sys-surfaceContainerHigh/60 rounded-tl-3xl w-56">時間 / 役割</th>
-                    <th class="py-6 px-6 bg-md_sys-surfaceContainer/50">受付</th>
-                    <th class="py-6 px-6 bg-md_sys-surfaceContainer/50">客引き</th>
-                    <th class="py-6 px-6 bg-md_sys-surfaceContainer/50">台車押し</th>
-                    <th class="py-6 px-6 bg-md_sys-surfaceContainer/50">得点集計</th>
-                    <th class="py-6 px-6 bg-md_sys-surfaceContainer/50">宣伝</th>
-                    <th class="py-6 px-6 bg-md_sys-surfaceContainer/50">ボール戻し</th>
-                    <th class="py-6 px-6 bg-md_sys-surfaceContainer/50">ボス</th>
-                    <th class="py-6 px-6 bg-md_sys-surfaceContainer/50 rounded-tr-3xl">案内役</th>
+                <tr class="border-b-2 border-md_sys-outlineVariant/40 text-center font-semibold text-md_sys-onSurfaceVariant h-[12%]">
+                    <th class="py-3 px-6 bg-md_sys-surfaceContainerHigh/60 rounded-tl-2xl w-[170px]">時間 / 役割</th>
+                    <th class="py-3 px-6 bg-md_sys-surfaceContainer/50 w-[170px]">受付</th>
+                    <th class="py-3 px-6 bg-md_sys-surfaceContainer/50 w-[190px]">客引き</th>
+                    <th class="py-3 px-6 bg-md_sys-surfaceContainer/50 w-[220px]">台車押し</th>
+                    <th class="py-3 px-6 bg-md_sys-surfaceContainer/50 w-[220px]">得点集計</th>
+                    <th class="py-3 px-6 bg-md_sys-surfaceContainer/50 w-[190px]">宣伝</th>
+                    <th class="py-3 px-6 bg-md_sys-surfaceContainer/50 w-[300px]">ボール戻し</th>
+                    <th class="py-3 px-6 bg-md_sys-surfaceContainer/50 w-[170px]">ボス</th>
+                    <th class="py-3 px-6 bg-md_sys-surfaceContainer/50 rounded-tr-2xl w-[170px]">案内役</th>
                 </tr>
             </thead>
-            <tbody class="divide-y divide-md_sys-outlineVariant/20">
-                <tr class="group hover:bg-md_sys-surfaceContainer/20 transition-colors">
-                    <td class="p-8 text-center bg-md_sys-surfaceContainerHigh/40 font-medium text-md_sys-onSurfaceVariant align-middle border-r border-md_sys-outlineVariant/20">
+            <tbody class="divide-y divide-md_sys-outlineVariant/20 h-[88%]">
+                <tr class="group transition-colors h-[44%]">
+                    <td class="p-6 text-center bg-md_sys-surfaceContainerHigh/40 font-medium text-md_sys-onSurfaceVariant align-middle border-r border-md_sys-outlineVariant/20">
                         <div class="flex flex-col items-center justify-center gap-1.5">
-                            <span class="font-bold text-md_sys-primary text-lg sm:text-xl">2日目午前</span>
-                            <span class="text-sm sm:text-base text-md_sys-outline">9:00〜12:00</span>
+                            <span class="font-bold text-md_sys-primary text-base">2日目午前</span>
+                            <span class="text-xs text-md_sys-outline">9:00〜12:00</span>
                         </div>
                     </td>
-                    <!-- 受付 (1人: 画像上では下段に配置、空欄なし) -->
+                    <!-- 受付 (1人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="flex flex-col gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">近藤</div>
+                        <div class="flex flex-col h-full justify-center">
+                            <div class="p-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">近藤</div>
                         </div>
                     </td>
                     <!-- 客引き (2人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="flex flex-col gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">古田</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">坂本</div>
+                        <div class="flex flex-col gap-3 h-full justify-center">
+                            <div class="py-3.5 px-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">古田</div>
+                            <div class="py-3.5 px-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">坂本</div>
                         </div>
                     </td>
                     <!-- 台車押し (3人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">大沼</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">上仮屋</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs col-span-2">浜本</div>
+                        <div class="grid grid-cols-2 gap-3 h-full content-center">
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">大沼</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">上仮屋</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs col-span-2">浜本</div>
                         </div>
                     </td>
                     <!-- 得点集計 (3人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">加瀬</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">塩野入</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs col-span-2">遠藤</div>
+                        <div class="grid grid-cols-2 gap-3 h-full content-center">
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">加瀬</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">塩野入</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs col-span-2">遠藤</div>
                         </div>
                     </td>
                     <!-- 宣伝 (2人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="flex flex-col gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">愛甲</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">石井</div>
+                        <div class="flex flex-col gap-3 h-full justify-center">
+                            <div class="py-3.5 px-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">愛甲</div>
+                            <div class="py-3.5 px-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">石井</div>
                         </div>
                     </td>
                     <!-- ボール戻し (4人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">高橋</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">北川</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">一色</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">長谷川</div>
+                        <div class="grid grid-cols-2 gap-3 h-full content-center">
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">高橋</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">北川</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">一色</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">長谷川</div>
                         </div>
                     </td>
-                    <!-- ボス (1人: 画像上では上段に配置、空欄なし) -->
+                    <!-- ボス (1人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="flex flex-col gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">紙谷</div>
+                        <div class="flex flex-col h-full justify-center">
+                            <div class="p-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">紙谷</div>
                         </div>
                     </td>
-                    <!-- 案内役 (1人: 画像上では上段に配置、空欄なし) -->
+                    <!-- 案内役 (1人) -->
                     <td class="p-4 align-middle">
-                        <div class="flex flex-col gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">大野</div>
+                        <div class="flex flex-col h-full justify-center">
+                            <div class="p-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">大野</div>
                         </div>
                     </td>
                 </tr>
 
-                <tr class="group hover:bg-md_sys-surfaceContainer/20 transition-colors">
-                    <td class="p-8 text-center bg-md_sys-surfaceContainerHigh/40 font-medium text-md_sys-onSurfaceVariant align-middle border-r border-md_sys-outlineVariant/20">
+                <tr class="group transition-colors h-[44%]">
+                    <td class="p-6 text-center bg-md_sys-surfaceContainerHigh/40 font-medium text-md_sys-onSurfaceVariant align-middle border-r border-md_sys-outlineVariant/20">
                         <div class="flex flex-col items-center justify-center gap-1.5">
-                            <span class="font-bold text-md_sys-primary text-lg sm:text-xl">2日目午後</span>
-                            <span class="text-sm sm:text-base text-md_sys-outline">12:00〜15:00</span>
+                            <span class="font-bold text-md_sys-primary text-base">2日目午後</span>
+                            <span class="text-xs text-md_sys-outline">12:00〜15:00</span>
                         </div>
                     </td>
-                    <!-- 受付 (1人: 画像上では上段に配置、空欄なし、浅部に変更) -->
+                    <!-- 受付 (1人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="flex flex-col gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">浅部</div>
+                        <div class="flex flex-col h-full justify-center">
+                            <div class="p-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">浅部</div>
                         </div>
                     </td>
                     <!-- 客引き (2人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="flex flex-col gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">藤森</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">廣瀬</div>
+                        <div class="flex flex-col gap-3 h-full justify-center">
+                            <div class="py-3.5 px-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">藤森</div>
+                            <div class="py-3.5 px-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">廣瀬</div>
                         </div>
                     </td>
                     <!-- 台車押し (3人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">佐々木</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">一條</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs col-span-2">辻</div>
+                        <div class="grid grid-cols-2 gap-3 h-full content-center">
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">佐々木</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">一條</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs col-span-2">辻</div>
                         </div>
                     </td>
                     <!-- 得点集計 (3人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">久礼</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">瀬野</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs col-span-2">有泉</div>
+                        <div class="grid grid-cols-2 gap-3 h-full content-center">
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">久礼</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">瀬野</div>
+                            <div class="py-3.5 px-3 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs col-span-2">有泉</div>
                         </div>
                     </td>
-                    <!-- 宣伝 (1人: 画像上では下段に配置、空欄なし) -->
+                    <!-- 宣伝 (1人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="flex flex-col gap-3 items-center justify-center h-full">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] w-full flex items-center justify-center font-medium shadow-xs">澤</div>
+                        <div class="flex flex-col h-full justify-center">
+                            <div class="p-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">澤</div>
                         </div>
                     </td>
-                    <!-- ボール戻し (4人) -->
+                    <!-- ボール戻し (6人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">土生</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">内村</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">西館</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">五十嵐</div>
+                        <div class="grid grid-cols-2 gap-2.5 h-full content-center">
+                            <div class="py-3 px-2 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">土生</div>
+                            <div class="py-3 px-2 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">内村</div>
+                            <div class="py-3 px-2 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">西館</div>
+                            <div class="py-3 px-2 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">五十嵐</div>
+                            <div class="py-3 px-2 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs col-span-2">石間</div>
                         </div>
                     </td>
-                    <!-- ボス (2人) -->
+                    <!-- ボス (1人) -->
                     <td class="p-4 border-r border-md_sys-outlineVariant/10 align-middle">
-                        <div class="flex flex-col gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">石間</div>
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">一柳</div>
+                        <div class="flex flex-col h-full justify-center">
+                            <div class="p-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">一柳</div>
                         </div>
                     </td>
-                    <!-- 案内役 (1人: 画像上では上段に配置、空欄なし) -->
+                    <!-- 案内役 (1人) -->
                     <td class="p-4 align-middle">
-                        <div class="flex flex-col gap-3">
-                            <div class="cell-hover p-4 text-center rounded-2xl bg-white/90 border border-md_sys-outlineVariant/20 min-h-[64px] flex items-center justify-center font-medium shadow-xs">磯野</div>
+                        <div class="flex flex-col h-full justify-center">
+                            <div class="p-4 text-center rounded-2xl bg-white border border-md_sys-outlineVariant/20 flex items-center justify-center font-medium shadow-2xs">磯野</div>
                         </div>
                     </td>
                 </tr>
